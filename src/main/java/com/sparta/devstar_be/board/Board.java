@@ -13,7 +13,7 @@ public class Board {
     private Long id;
 
     @Column(nullable = false)
-    private String date;
+    private String date1;
 
     @Column(nullable = false)
     private String title;
