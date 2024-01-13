@@ -32,6 +32,16 @@ public class Share {
         this.major = requestDto.getMajor();
     }
 
+    public Share update(ShareRequestDto requestDto) {
+        this.title = requestDto.getTitle();
+        this.contents = requestDto.getContents();
+        this.url = requestDto.getUrl();
+        this.name = requestDto.getName();
+        this.major = requestDto.getMajor();
+
+        return this;
+    }
+
 //    public Share(ShareRequestDto requestDto, User user){
 //        this.title = requestDto.getTitle();
 //        this.contents = requestDto.getContents();

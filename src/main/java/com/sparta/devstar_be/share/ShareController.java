@@ -37,6 +37,20 @@ public class ShareController {
         return ResponseEntity.ok(shareService.getAllShare());
     }
 
+    @PutMapping("/starshare/{shareId}")
+    public ResponseEntity<ShareResponseDto> updateShare (@PathVariable Long shareId,
+                                                         @RequestBody ShareRequestDto requestDto){
+        return ResponseEntity.ok(shareService.updateShare(shareId, requestDto));
+    }
+
+//    @PutMapping("/starshare/{shareId}")
+//    public ResponseEntity<ShareResponseDto> updateShare (@PathVariable Long shareId,
+//                                                         @RequestBody ShareRequestDto requestDto,
+//                                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
+//        return ResponseEntity.ok(shareService.updateShare(shareId, requestDto, userDetails.getUser()));
+//    }
+
+
     @DeleteMapping("/starshare/{shareId}")
     public ResponseEntity<String> deleteShare(@PathVariable Long shareId) {
         shareService.deleteShare(shareId);
