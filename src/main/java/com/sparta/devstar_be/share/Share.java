@@ -1,8 +1,12 @@
 package com.sparta.devstar_be.share;
 
+import com.sparta.devstar_be.like.Like;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,6 +28,12 @@ public class Share {
     private String name;
     private String major;
 
+    @OneToMany(mappedBy = "share", cascade = CascadeType.ALL)
+    private List<Like> likes = new ArrayList<>();
+
+    @Column(name = "like_count")
+    private int likeCount;
+
     public Share(ShareRequestDto requestDto){
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
@@ -40,6 +50,14 @@ public class Share {
         this.major = requestDto.getMajor();
 
         return this;
+    }
+
+    public void addLikeCount() {
+        this.likeCount++;
+    }
+
+    public void subtractLikeCount() {
+        this.likeCount--;
     }
 
 //    public Share(ShareRequestDto requestDto, User user){
