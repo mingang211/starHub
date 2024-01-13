@@ -24,4 +24,3 @@ public class Board {
     @Column
     private String imageUrl;
 }
-
