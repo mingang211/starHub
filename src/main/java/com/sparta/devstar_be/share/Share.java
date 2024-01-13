@@ -20,4 +20,23 @@ public class Share {
 
     @Column(nullable = false)
     private String url;
+
+    private String name;
+    private String major;
+
+    public Share(ShareRequestDto requestDto){
+        this.title = requestDto.getTitle();
+        this.contents = requestDto.getContents();
+        this.url = requestDto.getUrl();
+        this.name = requestDto.getName();
+        this.major = requestDto.getMajor();
+    }
+
+//    public Share(ShareRequestDto requestDto, User user){
+//        this.title = requestDto.getTitle();
+//        this.contents = requestDto.getContents();
+//        this.url = requestDto.getUrl();
+//        this.name = user.getName();
+//        this.major = user.getMajor();
+//    }
 }
