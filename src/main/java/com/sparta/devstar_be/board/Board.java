@@ -25,4 +25,3 @@ public class Board {
     private String imageUrl;
 }
 
-
