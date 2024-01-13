@@ -31,4 +31,10 @@ public class ShareController {
 //        return ResponseEntity.ok(createdShare);
 //    }
 
+    @GetMapping("/starshare")
+    public ResponseEntity<List<ShareResponseDto>> getAllShare (){
+        return ResponseEntity.ok(shareService.getAllShare());
+    }
+
+
 }
