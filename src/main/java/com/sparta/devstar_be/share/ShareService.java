@@ -1,12 +1,15 @@
 package com.sparta.devstar_be.share;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.NoResultException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,4 +51,19 @@ public class ShareService {
                 .map(ShareResponseDto::new)
                 .collect(Collectors.toList());
     }
+
+    public void deleteShare(Long shareId) {
+        shareRepository.deleteById(shareId);
+    }
+
+//    public void deleteShare(Long shareId, User user) {
+//        Share share = shareRepository.findById(shareId)
+//                .orElseThrow(() -> new EntityNotFoundException("해당 share를 찾을 수 없습니다."));
+//
+//        if (!Objects.equals(share.getUser().getUserId(), user.getId())) {
+//            throw new AccessDeniedException("해당 댓글을 삭제할 수 있는 권한이 없습니다.");
+//        }
+//
+//        shareRepository.delete(share);
+//    }
 }
