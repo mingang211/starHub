@@ -17,6 +17,9 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+# Ignore application.properties file
+application.properties
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
