@@ -31,6 +31,17 @@ public class BoardCommentsService {
         return new BoardCommentsReponseDto(saveBoardComments);
     }
 
+//    public BoardCommentsReponseDto createComments(Long boardId, String name, String major,BoardCommentsRequestDto requestDto) {
+//        Board board = boardRepository.findById(boardId).orElseThrow(
+//                ()-> new IllegalArgumentException("해당 게시글은 존재하지 않습니다."));
+//
+//        BoardComments boardComments = new BoardComments(board,name, major,requestDto);
+//
+//        BoardComments saveBoardComments = boardCommentsRepository.save(boardComments);
+//
+//        return new BoardCommentsReponseDto(saveBoardComments);
+//    }
+
     public BoardCommentsReponseDto updateComments(Long boardId, Long commentId, BoardCommentsRequestDto requestDto) {
         Board board = boardRepository.findById(boardId).orElseThrow(
                 ()-> new IllegalArgumentException("해당 게시글은 존재하지 않습니다."));

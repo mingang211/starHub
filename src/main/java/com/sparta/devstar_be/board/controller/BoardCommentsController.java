@@ -5,6 +5,8 @@ import com.sparta.devstar_be.board.dto.BoardCommentsReponseDto;
 import com.sparta.devstar_be.board.dto.BoardCommentsRequestDto;
 import com.sparta.devstar_be.board.dto.BoardRequestDto;
 import com.sparta.devstar_be.board.service.BoardCommentsService;
+import com.sparta.devstar_be.security.UserDetailsImpl;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,15 @@ public class BoardCommentsController {
                                                   @RequestBody BoardCommentsRequestDto requestDto){
         return boardCommentsService.createComments(boardId,requestDto);
     }
+
+//    @PostMapping("/comments")
+//    public BoardCommentsReponseDto createComments(@PathVariable Long boardId,
+//                                                  @RequestBody BoardCommentsRequestDto requestDto,
+//                                                  @AuthenticationPrincipal UserDetailsImpl userDetails){
+//        String username = userDetails.getUsername();
+//        String major = userDetails.getMajor();
+//        return boardCommentsService.createComments(boardId,username,major,requestDto);
+//    }
 
     @Transactional
     @PutMapping("/comments/{commentId}")

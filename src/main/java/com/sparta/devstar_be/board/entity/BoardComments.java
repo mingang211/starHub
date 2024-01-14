@@ -37,6 +37,13 @@ public class BoardComments {
         this.comments = requestDto.getComments();
     }
 
+//    public BoardComments(Board board, String name, String major, BoardCommentsRequestDto requestDto) {
+//        this.board = board;
+//        this.name = name;
+//        this.major = major;
+//        this.comments = requestDto.getComments();
+//    }
+
     public void update(Board board, BoardCommentsRequestDto requestDto) {
         this.board = board;
         this.comments = requestDto.getComments();
