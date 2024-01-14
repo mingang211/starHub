@@ -23,6 +23,14 @@ public class BoardService {
         return new BoardResponseDto(saveBoard);
     }
 
+//    public BoardResponseDto createBoard(String name, String major, BoardRequestDto requestDto) {
+//        Board board = new Board(name, major, requestDto);
+//
+//        Board saveBoard = boardRepository.save(board);
+//
+//        return new BoardResponseDto(saveBoard);
+//    }
+
     public BoardResponseDto findBoard(Long id) {
         Board board = boardRepository.findByIdWithComments(id).orElseThrow(
                 ()-> new IllegalArgumentException("해당 게시글이 없습니다."));
@@ -38,6 +46,7 @@ public class BoardService {
 
         return new BoardResponseDto(board);
     }
+
 
     public BoardDeleteResponseDto deleteBoard(Long boardId) {
         Board board = boardRepository.findById(boardId).orElseThrow(

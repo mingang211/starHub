@@ -46,6 +46,15 @@ public class Board {
         this.imageUrl = requestDto.getImageUrl();
     }
 
+//    public Board(String name, String major, BoardRequestDto requestDto) {
+//        this.date = requestDto.getDate();
+//        this.name = name;
+//        this.major = major;
+//        this.title = requestDto.getTitle();
+//        this.contents = requestDto.getContents();
+//        this.imageUrl = requestDto.getImageUrl();
+//    }
+
     public void update(BoardRequestDto requestDto) {
         this.date = requestDto.getDate();
         this.name = requestDto.getName();
@@ -54,5 +63,12 @@ public class Board {
         this.contents = requestDto.getContents();
         this.imageUrl = requestDto.getImageUrl();
     }
+
+//    public void update(BoardRequestDto requestDto) {
+//        this.date = requestDto.getDate();
+//        this.title = requestDto.getTitle();
+//        this.contents = requestDto.getContents();
+//        this.imageUrl = requestDto.getImageUrl();
+//    }
 
 }
