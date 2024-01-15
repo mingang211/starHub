@@ -10,10 +10,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
 public class BoardService {
 
     private final BoardRepository boardRepository;
+//    private final UserRepository userRepository;
+
+    public BoardService(BoardRepository boardRepository) {
+        this.boardRepository = boardRepository;
+    }
+
+//    public BoardService(BoardRepository boardRepository, UserRepository userRepository) {
+//        this.boardRepository = boardRepository;
+//        this.userRepository = userRepository;
+//    }
 
     public BoardResponseDto createBoard(BoardRequestDto requestDto) {
         Board board = new Board(requestDto);
@@ -54,6 +63,19 @@ public class BoardService {
 
         return new BoardResponseDto(board);
     }
+
+//    @Transactional
+//    public BoardResponseDto updateBoard(Long boardId, BoardRequestDto requestDto, User user) {
+//        Board board = boardRepository.findById(boardId).orElseThrow(
+//                ()-> new IllegalArgumentException("선택한 게시물은 존재하지 않습니다."));
+//        User updateUser = UserRepository.findByUsername(user.getUsername).orElseThrow(
+//                ()-> new IllegalArgumentException("선택한 사용자가 존재하지 않습니다."));
+//
+//        board.update(requestDto, updateUser);
+//
+//        return new BoardResponseDto(board);
+//    }
+
 
 
     public BoardDeleteResponseDto deleteBoard(Long boardId) {

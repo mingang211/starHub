@@ -64,8 +64,10 @@ public class Board {
         this.imageUrl = requestDto.getImageUrl();
     }
 
-//    public void update(BoardRequestDto requestDto) {
+//    public void update(BoardRequestDto requestDto, User user) {
 //        this.date = requestDto.getDate();
+//        this.name = user.getUsername;
+//        this.major = user.getMajor;
 //        this.title = requestDto.getTitle();
 //        this.contents = requestDto.getContents();
 //        this.imageUrl = requestDto.getImageUrl();

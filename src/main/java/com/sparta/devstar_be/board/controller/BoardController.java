@@ -46,6 +46,13 @@ public class BoardController {
         return boardService.updateBoard(boardId, requestDto);
     }
 
+//    @PutMapping("/starboards/{boardId}")
+//    public BoardResponseDto updateBoard (@PathVariable Long boardId ,
+//                                         @RequestBody BoardRequestDto requestDto,
+//                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
+//        return boardService.updateBoard(boardId, requestDto, userDetails.getUser(););
+//    }
+
     @DeleteMapping("/starboards/{boardId}")
     public BoardDeleteResponseDto deleteBoard (@PathVariable Long boardId){
         return boardService.deleteBoard(boardId);
