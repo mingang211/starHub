@@ -9,11 +9,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class BoardCommentsReponseDto {
+    private Long commentsId;
     private String name;
     private String major;
     private String comments;
 
     public BoardCommentsReponseDto(BoardComments boardComments) {
+        this.commentsId = boardComments.getCommentsId();
         this.name = boardComments.getName();
         this.major = boardComments.getMajor();
         this.comments = boardComments.getComments();

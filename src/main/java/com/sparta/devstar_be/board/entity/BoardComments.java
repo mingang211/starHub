@@ -13,7 +13,7 @@ public class BoardComments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long commentsId;
 
     @Column(nullable = false)
     private String comments;

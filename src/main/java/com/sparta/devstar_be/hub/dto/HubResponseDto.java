@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Getter
 public class HubResponseDto {
-    private Long id;
+    private Long boardId;
     private String date;
     private String name;
     private String major;
@@ -18,7 +18,7 @@ public class HubResponseDto {
     private String imageUrl;
 
     public HubResponseDto(Board board) {
-        this.id = board.getId();
+        this.boardId = board.getBoardId();
         this.date = board.getDate();
         this.name = board.getName();
         this.major = board.getMajor();

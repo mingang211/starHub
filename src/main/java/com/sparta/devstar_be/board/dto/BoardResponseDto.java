@@ -2,18 +2,14 @@ package com.sparta.devstar_be.board.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sparta.devstar_be.board.entity.Board;
-import com.sparta.devstar_be.board.entity.BoardComments;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
 public class BoardResponseDto {
-    private Long id;
+    private Long boardId;
     private String date;
     private String name;
     private String major;
@@ -24,7 +20,7 @@ public class BoardResponseDto {
     private List<BoardCommentsReponseDto> comments;
 
     public BoardResponseDto(Board board) {
-        this.id = board.getId();
+        this.boardId = board.getBoardId();
         this.date = board.getDate();
         this.name = board.getName();
         this.major = board.getMajor();
