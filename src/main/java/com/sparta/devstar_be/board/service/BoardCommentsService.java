@@ -8,6 +8,8 @@ import com.sparta.devstar_be.board.entity.BoardComments;
 import com.sparta.devstar_be.board.repository.BoardCommentsRepository;
 import com.sparta.devstar_be.board.repository.BoardRepository;
 import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +23,7 @@ public class BoardCommentsService {
     }
 
 
-    public BoardCommentsReponseDto createComments(Long boardId, BoardCommentsRequestDto requestDto) {
+    public ResponseEntity<BoardCommentsReponseDto> createComments(Long boardId, BoardCommentsRequestDto requestDto) {
         Board board = boardRepository.findById(boardId).orElseThrow(
                 ()-> new IllegalArgumentException("해당 게시글은 존재하지 않습니다."));
 
@@ -32,8 +34,8 @@ public class BoardCommentsService {
         }catch (DataAccessException e){
             throw  new RuntimeException("starBoard 등록 중 문제가 발생했습니다");
         }
-
-        return new BoardCommentsReponseDto(saveBoardComments);
+        BoardCommentsReponseDto boardCommentsReponseDto = new BoardCommentsReponseDto(saveBoardComments);
+        return new ResponseEntity<>(boardCommentsReponseDto, HttpStatus.CREATED);
     }
 
 //    public BoardCommentsReponseDto createComments(Long boardId,User user,BoardCommentsRequestDto requestDto) {

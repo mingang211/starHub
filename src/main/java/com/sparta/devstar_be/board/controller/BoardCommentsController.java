@@ -6,9 +6,11 @@ import com.sparta.devstar_be.board.dto.BoardCommentsRequestDto;
 import com.sparta.devstar_be.board.dto.BoardRequestDto;
 import com.sparta.devstar_be.board.service.BoardCommentsService;
 import com.sparta.devstar_be.security.UserDetailsImpl;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.function.EntityResponse;
 
 @RestController
 @RequestMapping("/api/starboards/{boardId}")
@@ -21,8 +23,8 @@ public class BoardCommentsController {
     }
 
     @PostMapping("/comments")
-    public BoardCommentsReponseDto createComments(@PathVariable Long boardId,
-                                                  @RequestBody BoardCommentsRequestDto requestDto){
+    public ResponseEntity<BoardCommentsReponseDto> createComments(@PathVariable Long boardId,
+                                                                  @RequestBody BoardCommentsRequestDto requestDto){
         return boardCommentsService.createComments(boardId,requestDto);
     }
 
