@@ -2,8 +2,12 @@ package com.sparta.devstar_be.board.dto;
 
 import com.sparta.devstar_be.board.entity.BoardComments;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
+@NoArgsConstructor
 public class BoardCommentsReponseDto {
     private String name;
     private String major;
