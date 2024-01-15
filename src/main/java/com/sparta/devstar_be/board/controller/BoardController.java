@@ -7,6 +7,7 @@ import com.sparta.devstar_be.board.dto.BoardResponseDto;
 import com.sparta.devstar_be.enums.Major;
 import com.sparta.devstar_be.security.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class BoardController {
 
 
     @PostMapping("/starboards")
-    public BoardResponseDto createBoard (@RequestBody BoardRequestDto requestDto){
+    public ResponseEntity<BoardResponseDto>  createBoard (@RequestBody BoardRequestDto requestDto){
         return boardService.createBoard(requestDto);
     }
 

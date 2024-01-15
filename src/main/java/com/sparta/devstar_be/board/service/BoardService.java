@@ -7,6 +7,8 @@ import com.sparta.devstar_be.board.entity.Board;
 import com.sparta.devstar_be.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,12 +27,13 @@ public class BoardService {
 //        this.userRepository = userRepository;
 //    }
 
-    public BoardResponseDto createBoard(BoardRequestDto requestDto) {
+    public ResponseEntity<BoardResponseDto> createBoard(BoardRequestDto requestDto) {
         Board board = new Board(requestDto);
 
         Board saveBoard = boardRepository.save(board);
 
-        return new BoardResponseDto(saveBoard);
+        BoardResponseDto responseDto = new BoardResponseDto(saveBoard);
+        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
 
 //    public BoardResponseDto createBoard(User user, BoardRequestDto requestDto) {
