@@ -47,4 +47,10 @@ public class BoardComments {
         this.board = board;
         this.comments = requestDto.getComments();
     }
+//    public void update(Board board, BoardCommentsRequestDto requestDto, User user) {
+//        this.board = board;
+//        this.comments = requestDto.getComments();
+//        this.name = user.getUsername;
+//        this.major = user.getMajor;
+//    }
 }

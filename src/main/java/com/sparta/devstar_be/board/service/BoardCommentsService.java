@@ -61,6 +61,17 @@ public class BoardCommentsService {
         return new BoardCommentsReponseDto(boardComments);
     }
 
+//    public BoardCommentsReponseDto updateComments(Long boardId, Long commentId, BoardCommentsRequestDto requestDto, User user) {
+//        Board board = boardRepository.findById(boardId).orElseThrow(
+//                ()-> new IllegalArgumentException("해당 게시글은 존재하지 않습니다."));
+//        BoardComments boardComments = boardCommentsRepository.findById(commentId).orElseThrow(
+//                ()-> new IllegalArgumentException("해당 댓글은 존재하지 않습니다."));
+//
+//        boardComments.update(board,requestDto,user);
+//
+//        return new BoardCommentsReponseDto(boardComments);
+//    }
+
     public BoardCommentsDeleteReponseDto deleteComments(Long boardId, Long commentId) {
         Board board = boardRepository.findById(boardId).orElseThrow(
                 ()-> new IllegalArgumentException("해당 게시글은 존재하지 않습니다."));

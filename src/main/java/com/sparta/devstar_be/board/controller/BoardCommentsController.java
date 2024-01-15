@@ -41,6 +41,14 @@ public class BoardCommentsController {
         return boardCommentsService.updateComments(boardId,commentId,requestDto);
     }
 
+//    @Transactional
+//    @PutMapping("/comments/{commentId}")
+//    public BoardCommentsReponseDto updateComments(@PathVariable Long boardId,@PathVariable Long commentId,
+//                                                  @RequestBody BoardCommentsRequestDto requestDto,
+//                                                  @AuthenticationPrincipal UserDetailsImpl userDetails){
+//        return boardCommentsService.updateComments(boardId,commentId,requestDto, userDetails.getUser());
+//    }
+
     @DeleteMapping("/comments/{commentId}")
     public BoardCommentsDeleteReponseDto deleteComments(@PathVariable Long boardId, @PathVariable Long commentId){
         return boardCommentsService.deleteComments(boardId,commentId);
