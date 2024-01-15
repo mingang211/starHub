@@ -6,6 +6,7 @@ import com.sparta.devstar_be.board.dto.BoardResponseDto;
 import com.sparta.devstar_be.board.entity.Board;
 import com.sparta.devstar_be.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,9 +59,11 @@ public class BoardService {
     public BoardResponseDto updateBoard(Long boardId, BoardRequestDto requestDto) {
         Board board = boardRepository.findById(boardId).orElseThrow(
                 ()-> new IllegalArgumentException("선택한 게시물은 존재하지 않습니다."));
-
-        board.update(requestDto);
-
+        try {
+            board.update(requestDto);
+        }catch (DataAccessException e){
+            throw new RuntimeException("starBoard 수정 중 문제가 발생했습니다.");
+        }
         return new BoardResponseDto(board);
     }
 
@@ -71,7 +74,11 @@ public class BoardService {
 //        User updateUser = UserRepository.findByUsername(user.getUsername).orElseThrow(
 //                ()-> new IllegalArgumentException("선택한 사용자가 존재하지 않습니다."));
 //
-//        board.update(requestDto, updateUser);
+//        try {
+//            board.update(requestDto);
+//        }catch (DataAccessException e){
+//            throw new RuntimeException("starBoard 수정 중 문제가 발생했습니다.");
+//        }
 //
 //        return new BoardResponseDto(board);
 //    }
@@ -81,8 +88,26 @@ public class BoardService {
     public BoardDeleteResponseDto deleteBoard(Long boardId) {
         Board board = boardRepository.findById(boardId).orElseThrow(
                 ()-> new IllegalArgumentException("선택한 게시물은 존재하지 않습니다."));
+        try {
+            boardRepository.delete(board);
+        }catch (DataAccessException e){
+            throw new RuntimeException("게시물 삭제 중 문제가 발생했습니다.");
+        }
 
-        boardRepository.delete(board);
         return new BoardDeleteResponseDto("보드가 삭제 되었습니다.");
     }
+
+//    public BoardDeleteResponseDto deleteBoard(Long boardId) {
+//        Board board = boardRepository.findById(boardId).orElseThrow(
+//                ()-> new IllegalArgumentException("선택한 게시물은 존재하지 않습니다."));
+//        User updateUser = UserRepository.findByUsername(user.getUsername).orElseThrow(
+//                ()-> new IllegalArgumentException("선택한 사용자가 존재하지 않습니다."));
+//
+//        try {
+//            boardRepository.delete(board);
+//        }catch (DataAccessException e){
+//            throw new RuntimeException("게시물 삭제 중 문제가 발생했습니다.");
+//        }
+//        return new BoardDeleteResponseDto("보드가 삭제 되었습니다.");
+//    }
 }

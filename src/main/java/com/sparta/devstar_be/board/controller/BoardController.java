@@ -58,5 +58,11 @@ public class BoardController {
         return boardService.deleteBoard(boardId);
     }
 
+//    @DeleteMapping("/starboards/{boardId}")
+//    public BoardDeleteResponseDto deleteBoard (@PathVariable Long boardId,
+//                                               @AuthenticationPrincipal UserDetailsImpl userDetails){
+//        return boardService.deleteBoard(boardId, userDetails.getUser());
+//    }
+
 
 }
