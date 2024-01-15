@@ -46,10 +46,10 @@ public class Board {
         this.imageUrl = requestDto.getImageUrl();
     }
 
-//    public Board(String name, String major, BoardRequestDto requestDto) {
+//    public Board(User user, BoardRequestDto requestDto) {
 //        this.date = requestDto.getDate();
-//        this.name = name;
-//        this.major = major;
+//        this.name = user.getUsername;
+//        this.major = user.getMajor;
 //        this.title = requestDto.getTitle();
 //        this.contents = requestDto.getContents();
 //        this.imageUrl = requestDto.getImageUrl();

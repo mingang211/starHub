@@ -37,10 +37,10 @@ public class BoardComments {
         this.comments = requestDto.getComments();
     }
 
-//    public BoardComments(Board board, String name, String major, BoardCommentsRequestDto requestDto) {
+//    public BoardComments(Board board, User user, BoardCommentsRequestDto requestDto) {
 //        this.board = board;
-//        this.name = name;
-//        this.major = major;
+//        this.name = user.getUsername;
+//        this.major = user.getMajor;
 //        this.comments = requestDto.getComments();
 //    }
 

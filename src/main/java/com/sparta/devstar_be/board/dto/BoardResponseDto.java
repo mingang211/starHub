@@ -16,7 +16,7 @@ public class BoardResponseDto {
     private String title;
     private String contents;
     private String imageUrl;
-    private List<BoardCommentsReponseDto> boardCommentsList;
+    private List<BoardCommentsReponseDto> comments;
 
     public BoardResponseDto(Board board) {
         this.id = board.getId();
@@ -26,6 +26,6 @@ public class BoardResponseDto {
         this.title = board.getTitle();
         this.contents = board.getContents();
         this.imageUrl = board.getImageUrl();
-        this.boardCommentsList = board.getComments().stream().map(BoardCommentsReponseDto::new).collect(Collectors.toList());
+        this.comments = board.getComments().stream().map(BoardCommentsReponseDto::new).collect(Collectors.toList());
     }
 }

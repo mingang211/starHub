@@ -7,6 +7,7 @@ import com.sparta.devstar_be.board.entity.Board;
 import com.sparta.devstar_be.board.entity.BoardComments;
 import com.sparta.devstar_be.board.repository.BoardCommentsRepository;
 import com.sparta.devstar_be.board.repository.BoardRepository;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,19 +26,26 @@ public class BoardCommentsService {
                 ()-> new IllegalArgumentException("해당 게시글은 존재하지 않습니다."));
 
         BoardComments boardComments = new BoardComments(board,requestDto);
-
-        BoardComments saveBoardComments = boardCommentsRepository.save(boardComments);
+        BoardComments saveBoardComments;
+        try {
+            saveBoardComments = boardCommentsRepository.save(boardComments);
+        }catch (DataAccessException e){
+            throw  new RuntimeException("starBoard 등록 중 문제가 발생했습니다");
+        }
 
         return new BoardCommentsReponseDto(saveBoardComments);
     }
 
-//    public BoardCommentsReponseDto createComments(Long boardId, String name, String major,BoardCommentsRequestDto requestDto) {
+//    public BoardCommentsReponseDto createComments(Long boardId,User user,BoardCommentsRequestDto requestDto) {
 //        Board board = boardRepository.findById(boardId).orElseThrow(
 //                ()-> new IllegalArgumentException("해당 게시글은 존재하지 않습니다."));
-//
-//        BoardComments boardComments = new BoardComments(board,name, major,requestDto);
-//
-//        BoardComments saveBoardComments = boardCommentsRepository.save(boardComments);
+//        BoardComments boardComments = new BoardComments(board,User user,requestDto);
+//        BoardComments saveBoardComments;
+//        try {
+//            saveBoardComments = boardCommentsRepository.save(boardComments);
+//        }catch (DataAccessException e){
+//            throw  new RuntimeException("starBoard 등록 중 문제가 발생했습니다");
+//        }
 //
 //        return new BoardCommentsReponseDto(saveBoardComments);
 //    }

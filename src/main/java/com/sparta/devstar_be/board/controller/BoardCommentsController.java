@@ -30,9 +30,8 @@ public class BoardCommentsController {
 //    public BoardCommentsReponseDto createComments(@PathVariable Long boardId,
 //                                                  @RequestBody BoardCommentsRequestDto requestDto,
 //                                                  @AuthenticationPrincipal UserDetailsImpl userDetails){
-//        String username = userDetails.getUsername();
-//        String major = userDetails.getMajor();
-//        return boardCommentsService.createComments(boardId,username,major,requestDto);
+//
+//        return boardCommentsService.createComments(boardId,userDetails.getUser,requestDto);
 //    }
 
     @Transactional
