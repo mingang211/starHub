@@ -32,11 +32,18 @@ public class BoardService {
 //        return new BoardResponseDto(saveBoard);
 //    }
 
-    public BoardResponseDto findBoard(Long id) {
+    public BoardResponseDto getBoard(Long id) {
         Board board = boardRepository.findByIdWithComments(id).orElseThrow(
                 ()-> new IllegalArgumentException("해당 게시글이 없습니다."));
         return new BoardResponseDto(board);
     }
+//    public BoardResponseDto getBoard(Long id,User user) {
+//        Board board = boardRepository.findByIdWithComments(id).orElseThrow(
+//                ()-> new IllegalArgumentException("해당 게시글이 없습니다."));
+//        String name = user.getUsername;
+//        String major = user.getMajor;
+//        return new BoardResponseDto(board);
+//    }
 
     @Transactional
     public BoardResponseDto updateBoard(Long boardId, BoardRequestDto requestDto) {

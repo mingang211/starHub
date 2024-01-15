@@ -31,9 +31,15 @@ public class BoardController {
 //    }
 
     @GetMapping("/starboards/{boardId}")
-    public BoardResponseDto findBoard (@PathVariable Long boardId) {
-        return  boardService.findBoard(boardId);
+    public BoardResponseDto getBoard (@PathVariable Long boardId) {
+        return  boardService.getBoard(boardId);
     }
+
+//    @GetMapping("/starboards/{boardId}")
+//    public BoardResponseDto getBoard (@PathVariable Long boardId,
+//                                      @AuthenticationPrincipal UserDetailsImpl userDetails) {
+//        return  boardService.getBoard(boardId, userDetails.getUser);
+//    }
 
     @PutMapping("/starboards/{boardId}")
     public BoardResponseDto updateBoard (@PathVariable Long boardId ,@RequestBody BoardRequestDto requestDto){
