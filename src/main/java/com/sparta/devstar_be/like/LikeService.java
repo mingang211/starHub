@@ -13,12 +13,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class LikeService {
 
     private final LikeRepository likeRepository;
     private final UserRepository userRepository;
     private final ShareRepository shareRepository;
+
+    public LikeService (LikeRepository likeRepository, UserRepository userRepository, ShareRepository shareRepository){
+        this.likeRepository = likeRepository;
+        this.userRepository = userRepository;
+        this.shareRepository = shareRepository;
+    }
 
     @Transactional
     public LikeResponseDto addLikeToShare(Long shareId, User correntUser){

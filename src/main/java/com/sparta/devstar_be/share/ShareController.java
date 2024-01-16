@@ -14,10 +14,13 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api")
-@RequiredArgsConstructor
 public class ShareController {
 
     private final ShareService shareService;
+
+    public ShareController (ShareService shareService){
+        this.shareService = shareService;
+    }
 
     @PostMapping("/starshare")
     public ResponseEntity<ShareResponseDto> createShare (@RequestBody @Valid ShareRequestDto requestDto){
@@ -35,6 +38,11 @@ public class ShareController {
     @GetMapping("/starshare")
     public ResponseEntity<List<ShareResponseDto>> getAllShare (){
         return ResponseEntity.ok(shareService.getAllShare());
+    }
+
+    @GetMapping("/starshare/{shareId}")
+    public ResponseEntity<ShareResponseDto> getShare (@PathVariable Long shareId){
+        return ResponseEntity.ok(shareService.getShare(shareId));
     }
 
     @PutMapping("/starshare/{shareId}")

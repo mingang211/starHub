@@ -52,7 +52,11 @@ public class ShareService {
                 .collect(Collectors.toList());
     }
 
-
+    public ShareResponseDto getShare(Long shareId) {
+        Share share = shareRepository.findById(shareId).orElseThrow(()->
+                new EntityNotFoundException("해당 share를 찾을 수 없습니다."));
+        return new ShareResponseDto(share);
+    }
 
     public ShareResponseDto updateShare(Long shareId, ShareRequestDto requestDto) {
         Share share = shareRepository.findById(shareId).orElseThrow(

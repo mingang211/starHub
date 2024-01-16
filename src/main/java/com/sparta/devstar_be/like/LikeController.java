@@ -1,7 +1,6 @@
 package com.sparta.devstar_be.like;
 
 import com.sparta.devstar_be.security.UserDetailsImpl;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api")
 public class LikeController {
 
     private final LikeService likeService;
+
+    public LikeController (LikeService likeService){
+        this.likeService = likeService;
+    }
 
     @PostMapping("/starshare/{shareId}/like")
     public ResponseEntity<LikeResponseDto> addLikeToShare(@PathVariable Long shareId,
