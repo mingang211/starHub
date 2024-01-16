@@ -1,11 +1,13 @@
 package com.sparta.devstar_be.like;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sparta.devstar_be.share.Share;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class LikeResponseDto {
     private Long likeId;
     private Long userId;
