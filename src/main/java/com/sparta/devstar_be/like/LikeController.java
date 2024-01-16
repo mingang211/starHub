@@ -23,13 +23,13 @@ public class LikeController {
     public ResponseEntity<LikeResponseDto> addLikeToShare(@PathVariable Long shareId,
                                                           @AuthenticationPrincipal UserDetailsImpl userDetails){
         LikeResponseDto addedLike = likeService.addLikeToShare(shareId, userDetails.getUser());
-        return ResponseEntity.status(HttpStatus.CREATED).body(addedLike);
+        return ResponseEntity.status(HttpStatus.OK).body(addedLike);
     }
 
     @DeleteMapping("/starshare/{shareId}/like")
     public ResponseEntity<LikeResponseDto> deleteLikeToShare(@PathVariable Long shareId,
                                                     @AuthenticationPrincipal UserDetailsImpl userDetails) {
         LikeResponseDto deletedLike = likeService.deleteLikeToShare(shareId, userDetails.getUser());
-        return ResponseEntity.status(HttpStatus.CREATED).body(deletedLike);
+        return ResponseEntity.status(HttpStatus.OK).body(deletedLike);
     }
 }

@@ -4,6 +4,7 @@ import com.sparta.devstar_be.security.UserDetailsImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -42,13 +43,13 @@ public class ShareController {
 
     @GetMapping("/starshare/{shareId}")
     public ResponseEntity<ShareResponseDto> getShare (@PathVariable Long shareId){
-        return ResponseEntity.ok(shareService.getShare(shareId));
+        return ResponseEntity.status(HttpStatus.OK).body(shareService.getShare(shareId));
     }
 
     @PutMapping("/starshare/{shareId}")
     public ResponseEntity<ShareResponseDto> updateShare (@PathVariable Long shareId,
                                                          @RequestBody ShareRequestDto requestDto){
-        return ResponseEntity.ok(shareService.updateShare(shareId, requestDto));
+        return ResponseEntity.status(HttpStatus.OK).body(shareService.updateShare(shareId, requestDto));
     }
 
 //    @PutMapping("/starshare/{shareId}")
@@ -62,7 +63,7 @@ public class ShareController {
     @DeleteMapping("/starshare/{shareId}")
     public ResponseEntity<String> deleteShare(@PathVariable Long shareId) {
         shareService.deleteShare(shareId);
-        return ResponseEntity.ok("deleteCommentSuccess");
+        return ResponseEntity.status(HttpStatus.OK).body("deleteCommentSuccess");
     }
 
 //    @DeleteMapping("/starshare/{shareId}")
