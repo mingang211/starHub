@@ -37,6 +37,7 @@ public class Board {
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BoardComments> comments = new ArrayList<>();
 
+
 //    @ManyToOne
 //    @JoinColumn(name = "user_id")
 //    private User user;

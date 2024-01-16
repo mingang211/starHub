@@ -28,6 +28,9 @@ public class BoardComments {
     @JoinColumn(name = "board_id")
     private Board board;
 
+//    @ManyToOne(fetch = LAZY)
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     public BoardComments(Board board, BoardCommentsRequestDto requestDto) {
         this.board = board;
