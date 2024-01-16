@@ -18,7 +18,7 @@ bin/
 !**/src/test/**/bin/
 
 # Ignore application.properties file
-application.properties
+/src/main/resources/application.properties
 
 ### IntelliJ IDEA ###
 .idea
