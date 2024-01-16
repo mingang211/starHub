@@ -8,6 +8,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static jakarta.persistence.FetchType.LAZY;
 
 @Getter
@@ -26,6 +29,12 @@ public class Like {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "share_id")
     private Share share;
+
+    @OneToMany(mappedBy = "like")
+    private Set<Like> shareLikes = new HashSet<>();
+
+    @OneToMany(mappedBy = "like")
+    private Set<Like> userLikes = new HashSet<>();
 
     @Builder
     public Like(User user, Share share) {

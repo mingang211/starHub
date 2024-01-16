@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -28,8 +30,8 @@ public class Share {
     private String name;
     private String major;
 
-    @OneToMany(mappedBy = "share", cascade = CascadeType.ALL)
-    private List<Like> likes = new ArrayList<>();
+    @OneToMany(mappedBy = "share")
+    private Set<Like> shareLikes = new HashSet<>();
 
     @Column(name = "like_count")
     private int likeCount;
