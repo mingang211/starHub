@@ -11,5 +11,4 @@ public class DevstarBeApplication {
     public static void main(String[] args) {
         SpringApplication.run(DevstarBeApplication.class, args);
     }
-
 }
