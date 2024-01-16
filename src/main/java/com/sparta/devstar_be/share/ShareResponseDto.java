@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class ShareResponseDto {
-    private Long id;
+    private Long shareId;
     private String title;
     private String contents;
     private String url;
@@ -14,7 +14,7 @@ public class ShareResponseDto {
     private String major;
 
     public ShareResponseDto(Share share){
-        this.id = share.getId();
+        this.shareId = share.getId();
         this.title = share.getTitle();
         this.contents = share.getContents();
         this.url = share.getUrl();
