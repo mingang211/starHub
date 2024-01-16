@@ -1,5 +1,10 @@
 package com.sparta.devstar_be.user.config;
 
+import org.springframework.security.config.Customizer;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+
 import com.sparta.devstar_be.user.jwt.JwtAuthenticationFilter;
 import com.sparta.devstar_be.user.jwt.JwtAuthorizationFilter;
 import com.sparta.devstar_be.user.jwt.JwtUtil;
@@ -14,6 +19,9 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -65,6 +73,22 @@ public class WebSecurityConfig {
         http.addFilterBefore(jwtAuthorizationFilter(), JwtAuthenticationFilter.class);
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
+        // 6. CORS 설정 적용
+        http.cors(Customizer.withDefaults());
         return http.build();
+    }
+
+    // CORS 설정 빈 등록
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.setAllowedOrigins(List.of("http://localhost:3000"));
+        config.setAllowedMethods(List.of("HEAD", "POST", "GET", "DELETE", "PUT"));
+        config.setAllowedHeaders(List.of("*"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+        return source;
     }
 }
