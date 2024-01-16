@@ -1,15 +1,9 @@
 package com.sparta.devstar_be.user.entity;
 
-<<<<<<< HEAD
-import com.sparta.devstar_be.board.entity.Board;
-import com.sparta.devstar_be.board.entity.BoardComments;
-import com.sparta.devstar_be.enums.Major;
-=======
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sparta.devstar_be.board.Board;
 import com.sparta.devstar_be.share.Share;
 import com.sparta.devstar_be.user.dto.ProfileRequestDto;
->>>>>>> develop
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,15 +31,6 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-<<<<<<< HEAD
-    @Enumerated(value = EnumType.STRING)
-    private Major major;
-
-//
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<Board> boards = new ArrayList<>();
-}
-=======
     private String major;
 
     @OneToMany(mappedBy = "user")
@@ -72,4 +57,3 @@ public class User {
         this.major = requestDto.getMajor();
     }
 }
->>>>>>> develop
