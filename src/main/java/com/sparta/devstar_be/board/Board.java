@@ -24,3 +24,8 @@ public class Board {
     @Column
     private String imageUrl;
 }
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+}
