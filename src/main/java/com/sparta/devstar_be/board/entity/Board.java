@@ -36,12 +36,11 @@ public class Board {
     private String imageUrl;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BoardComments> comments = new ArrayList<>();
+    private List<BoardComments> commentsList = new ArrayList<>();
 
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Board(User user, BoardRequestDto requestDto) {
         this.date = requestDto.getDate();

@@ -20,17 +20,11 @@ public class ShareController {
     }
 
     @PostMapping("/starshare")
-    public ResponseEntity<ShareResponseDto> createShare (@RequestBody @Valid ShareRequestDto requestDto){
-        ShareResponseDto createdShare = shareService.createShare(requestDto);
+    public ResponseEntity<ShareResponseDto> createShare (@RequestBody @Valid ShareRequestDto requestDto,
+                                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
+        ShareResponseDto createdShare = shareService.createShare(requestDto, userDetails.getUser());
         return ResponseEntity.ok(createdShare);
     }
-
-//    @PostMapping("/starshare")
-//    public ResponseEntity<ShareResponseDto> createShare (@RequestBody @Valid ShareRequestDto requestDto,
-//                                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
-//        ShareResponseDto createdShare = shareService.createShare(requestDto, userDetails.getUser());
-//        return ResponseEntity.ok(createdShare);
-//    }
 
     @GetMapping("/starshare")
     public ResponseEntity<List<ShareResponseDto>> getAllShare (){
@@ -44,28 +38,16 @@ public class ShareController {
 
     @PutMapping("/starshare/{shareId}")
     public ResponseEntity<ShareResponseDto> updateShare (@PathVariable Long shareId,
-                                                         @RequestBody ShareRequestDto requestDto){
-        return ResponseEntity.status(HttpStatus.OK).body(shareService.updateShare(shareId, requestDto));
+                                                         @RequestBody ShareRequestDto requestDto,
+                                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
+        return ResponseEntity.ok(shareService.updateShare(shareId, requestDto, userDetails.getUser()));
     }
-
-//    @PutMapping("/starshare/{shareId}")
-//    public ResponseEntity<ShareResponseDto> updateShare (@PathVariable Long shareId,
-//                                                         @RequestBody ShareRequestDto requestDto,
-//                                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
-//        return ResponseEntity.ok(shareService.updateShare(shareId, requestDto, userDetails.getUser()));
-//    }
 
 
     @DeleteMapping("/starshare/{shareId}")
-    public ResponseEntity<String> deleteShare(@PathVariable Long shareId) {
-        shareService.deleteShare(shareId);
-        return ResponseEntity.status(HttpStatus.OK).body("deleteCommentSuccess");
+    public ResponseEntity<String> deleteShare(@PathVariable Long shareId,
+                                              @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        shareService.deleteShare(shareId, userDetails.getUser());
+        return ResponseEntity.ok("deleteCommentSuccess");
     }
-
-//    @DeleteMapping("/starshare/{shareId}")
-//    public ResponseEntity<String> deleteShare(@PathVariable Long shareId,
-//                                              @AuthenticationPrincipal UserDetailsImpl userDetails) {
-//        shareService.deleteShare(shareId, userDetails.getUser());
-//        return ResponseEntity.ok("deleteCommentSuccess");
-//    }
 }

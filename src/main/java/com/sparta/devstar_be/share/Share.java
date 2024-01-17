@@ -31,18 +31,22 @@ public class Share {
     private String name;
     private String major;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @OneToMany(mappedBy = "share")
-    private Set<Like> shareLikes = new HashSet<>();
+    private List<Like> shareLikeList = new ArrayList<>();
 
     @Column(name = "like_count")
     private int likeCount;
 
-    public Share(ShareRequestDto requestDto){
+    public Share(ShareRequestDto requestDto, User user){
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
         this.url = requestDto.getUrl();
-        this.name = requestDto.getName();
-        this.major = requestDto.getMajor();
+        this.name = user.getName();
+        this.major = user.getMajor();
     }
 
     public Share update(ShareRequestDto requestDto) {
@@ -63,15 +67,4 @@ public class Share {
         this.likeCount--;
     }
 
-//    public Share(ShareRequestDto requestDto, User user){
-//        this.title = requestDto.getTitle();
-//        this.contents = requestDto.getContents();
-//        this.url = requestDto.getUrl();
-//        this.name = user.getName();
-//        this.major = user.getMajor();
-//    }
-  
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 }
