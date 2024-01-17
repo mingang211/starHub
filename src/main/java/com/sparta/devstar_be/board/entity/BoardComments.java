@@ -1,6 +1,7 @@
 package com.sparta.devstar_be.board.entity;
 
 import com.sparta.devstar_be.board.dto.BoardCommentsRequestDto;
+import com.sparta.devstar_be.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,28 +33,17 @@ public class BoardComments {
 //    @JoinColumn(name = "user_id")
 //    private User user;
 
-    public BoardComments(Board board, BoardCommentsRequestDto requestDto) {
+    public BoardComments(Board board, BoardCommentsRequestDto requestDto, User user) {
         this.board = board;
-        this.name = requestDto.getName();
-        this.major = requestDto.getMajor();
+        this.name = user.getName();
+        this.major = user.getMajor();
         this.comments = requestDto.getComments();
     }
 
-//    public BoardComments(Board board, User user, BoardCommentsRequestDto requestDto) {
-//        this.board = board;
-//        this.name = user.getUsername;
-//        this.major = user.getMajor;
-//        this.comments = requestDto.getComments();
-//    }
 
     public void update(Board board, BoardCommentsRequestDto requestDto) {
         this.board = board;
         this.comments = requestDto.getComments();
     }
-//    public void update(Board board, BoardCommentsRequestDto requestDto, User user) {
-//        this.board = board;
-//        this.comments = requestDto.getComments();
-//        this.name = user.getUsername;
-//        this.major = user.getMajor;
-//    }
+
 }
