@@ -29,10 +29,11 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
-        String token = jwtUtil.getTokenFromRequest(req);
+        String tokenValue = jwtUtil.getTokenFromRequest(req);
 
-        if (StringUtils.hasText(token)) {
-            String tokenValue = jwtUtil.substringToken(token);
+
+        if (StringUtils.hasText(tokenValue)) {
+            tokenValue = jwtUtil.substringToken(tokenValue);
             log.info("tokenValue:" + tokenValue);
             if (!jwtUtil.validateToken(tokenValue)) {
                 log.error("Token Error");
@@ -60,9 +61,9 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     private Authentication createAuthentication(String email) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-        System.out.println("authorities"+userDetails.getAuthorities());
-        System.out.println("password"+userDetails.getPassword());
-        System.out.println("username"+userDetails.getUsername());
+        log.info("authorities="+userDetails.getAuthorities());
+        log.info("password="+userDetails.getPassword());
+        log.info("username="+userDetails.getUsername());
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
 

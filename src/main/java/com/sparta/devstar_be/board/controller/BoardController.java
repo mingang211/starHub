@@ -24,8 +24,10 @@ public class BoardController {
     @PostMapping("/starboards")
     public ResponseEntity<BoardResponseDto>  createBoard (@RequestBody BoardRequestDto requestDto,
                                          @AuthenticationPrincipal UserDetailsImpl userDetails){
-
+        System.out.println(requestDto.getContents());
         BoardResponseDto createBoard = boardService.createBoard(userDetails.getUser(),requestDto);
+        System.out.println("getboard ="+createBoard.getContents());
+        System.out.println("userDetails="+userDetails.getUser().getEmail());
         return ResponseEntity.status(HttpStatus.CREATED).body(createBoard);
     }
 

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class ShareLike {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long shareLikeId;
 
     @ManyToOne
     @JoinColumn(name = "share_id")

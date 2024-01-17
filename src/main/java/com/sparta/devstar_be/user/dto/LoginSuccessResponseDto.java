@@ -9,8 +9,8 @@ public class LoginSuccessResponseDto {
     private Long userId;
     private String token;
 
-    public LoginSuccessResponseDto(Long userId, String token) { // valueToken -> token
+    public LoginSuccessResponseDto(Long userId, String token) {
         this.userId = userId;
-        this.token = "Bearer%20"+token;
+        this.token = "Baerer "+token;
     }
 }
