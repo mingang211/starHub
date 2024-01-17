@@ -10,6 +10,7 @@ import com.sparta.devstar_be.user.security.UserDetailsImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -61,9 +62,9 @@ public class UserService {
     }
 
     // 2. 개인정보 조회
-    public ResponseEntity<ProfileResponseDto> getUserProfile(UserDetailsImpl userDetails) {
+    public ResponseEntity<ProfileResponseDto> getUserProfile(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         log.info("[log] getUserProfile: 개인정보 조회 시도");
-        ProfileResponseDto profileResponseDto = new ProfileResponseDto(userDetails.getUser().getUserId(), userDetails.getUser().getName(), userDetails.getUser().getEmail(), userDetails.getUser().getMajor());
+        ProfileResponseDto profileResponseDto = new ProfileResponseDto(userDetails.getUser().getUserId(), userDetails.getUsername(), userDetails.getEmail(), userDetails.getMajor());
         log.info("[log] getUserProfile: 개인정보 조회 완료");
         return ResponseEntity.status(HttpStatus.OK).body(profileResponseDto);
     }

@@ -17,6 +17,7 @@ import static jakarta.persistence.FetchType.LAZY;
 @Getter
 @NoArgsConstructor
 @Entity
+@Table (name = "likes")
 public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,12 +31,6 @@ public class Like {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "share_id")
     private Share share;
-
-//    @OneToMany(mappedBy = "like")
-//    private Set<Like> shareLikes = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "like")
-//    private Set<Like> userLikes = new HashSet<>();
 
     @Builder
     public Like(User user, Share share) {
