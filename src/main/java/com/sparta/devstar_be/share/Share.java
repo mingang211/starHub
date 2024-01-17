@@ -41,12 +41,12 @@ public class Share {
     @Column(name = "like_count")
     private int likeCount;
 
-    public Share(ShareRequestDto requestDto){
+    public Share(ShareRequestDto requestDto, User user){
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
         this.url = requestDto.getUrl();
-        this.name = requestDto.getName();
-        this.major = requestDto.getMajor();
+        this.name = user.getName();
+        this.major = user.getMajor();
     }
 
     public Share update(ShareRequestDto requestDto) {
@@ -66,14 +66,5 @@ public class Share {
     public void subtractLikeCount() {
         this.likeCount--;
     }
-
-//    public Share(ShareRequestDto requestDto, User user){
-//        this.title = requestDto.getTitle();
-//        this.contents = requestDto.getContents();
-//        this.url = requestDto.getUrl();
-//        this.name = user.getName();
-//        this.major = user.getMajor();
-//    }
-  
 
 }
