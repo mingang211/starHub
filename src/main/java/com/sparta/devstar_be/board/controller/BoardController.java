@@ -6,8 +6,8 @@ import com.sparta.devstar_be.board.dto.BoardResponseDto;
 import com.sparta.devstar_be.board.service.BoardService;
 import com.sparta.devstar_be.user.security.UserDetailsImpl;
 import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

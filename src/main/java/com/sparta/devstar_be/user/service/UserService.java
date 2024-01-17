@@ -63,7 +63,7 @@ public class UserService {
     // 2. 개인정보 조회
     public ResponseEntity<ProfileResponseDto> getUserProfile(UserDetailsImpl userDetails) {
         log.info("[log] getUserProfile: 개인정보 조회 시도");
-        ProfileResponseDto profileResponseDto = new ProfileResponseDto(userDetails.getUser().getUserId(), userDetails.getUsername(), userDetails.getEmail(), userDetails.getMajor());
+        ProfileResponseDto profileResponseDto = new ProfileResponseDto(userDetails.getUser().getUserId(), userDetails.getUser().getName(), userDetails.getUser().getEmail(), userDetails.getUser().getMajor());
         log.info("[log] getUserProfile: 개인정보 조회 완료");
         return ResponseEntity.status(HttpStatus.OK).body(profileResponseDto);
     }

@@ -4,10 +4,10 @@ import com.sparta.devstar_be.board.dto.BoardCommentsDeleteReponseDto;
 import com.sparta.devstar_be.board.dto.BoardCommentsReponseDto;
 import com.sparta.devstar_be.board.dto.BoardCommentsRequestDto;
 import com.sparta.devstar_be.board.service.BoardCommentsService;
+
 import com.sparta.devstar_be.user.security.UserDetailsImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 

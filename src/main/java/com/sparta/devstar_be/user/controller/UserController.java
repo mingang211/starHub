@@ -36,6 +36,13 @@ public class UserController {
 //        return userService.getListsByUserId(userId);
 //    }
 
+
+    // 3. 마이페이지 조회
+//    @GetMapping("/mypage/{userId}")
+//    public ResponseEntity<MypageResponseDto> getListsByUserId(@PathVariable Long userId) {
+//        return userService.getListsByUserId(userId);
+//    }
+
     // 4. 개인정보 수정
     @PutMapping("/profile")
     public ResponseEntity<ProfileResponseDto> updateUserProfile(@AuthenticationPrincipal UserDetailsImpl userDetails, @RequestBody @Valid ProfileRequestDto requestDto) {

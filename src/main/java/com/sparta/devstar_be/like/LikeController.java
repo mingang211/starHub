@@ -1,6 +1,5 @@
 package com.sparta.devstar_be.like;
 
-
 import com.sparta.devstar_be.user.security.UserDetailsImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
