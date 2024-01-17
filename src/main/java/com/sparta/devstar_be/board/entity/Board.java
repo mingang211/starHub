@@ -1,6 +1,7 @@
 package com.sparta.devstar_be.board.entity;
 
 import com.sparta.devstar_be.board.dto.BoardRequestDto;
+import com.sparta.devstar_be.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,12 +36,11 @@ public class Board {
     private String imageUrl;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BoardComments> comments = new ArrayList<>();
+    private List<BoardComments> commentsList = new ArrayList<>();
 
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Board(BoardRequestDto requestDto) {
         this.date = requestDto.getDate();

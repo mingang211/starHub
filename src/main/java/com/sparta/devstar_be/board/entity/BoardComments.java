@@ -1,9 +1,12 @@
 package com.sparta.devstar_be.board.entity;
 
 import com.sparta.devstar_be.board.dto.BoardCommentsRequestDto;
+import com.sparta.devstar_be.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import static jakarta.persistence.FetchType.LAZY;
 
 
 @Entity
@@ -28,9 +31,9 @@ public class BoardComments {
     @JoinColumn(name = "board_id")
     private Board board;
 
-//    @ManyToOne(fetch = LAZY)
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public BoardComments(Board board, BoardCommentsRequestDto requestDto) {
         this.board = board;

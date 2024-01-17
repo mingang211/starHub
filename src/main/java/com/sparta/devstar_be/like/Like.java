@@ -1,6 +1,5 @@
 package com.sparta.devstar_be.like;
 
-import com.sparta.devstar_be.board.Board;
 import com.sparta.devstar_be.share.Share;
 import com.sparta.devstar_be.user.entity.User;
 import jakarta.persistence.*;
@@ -8,7 +7,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static jakarta.persistence.FetchType.LAZY;
@@ -31,10 +32,10 @@ public class Like {
     private Share share;
 
     @OneToMany(mappedBy = "like")
-    private Set<Like> shareLikes = new HashSet<>();
+    private List<Like> shareLikes = new ArrayList<>();
 
     @OneToMany(mappedBy = "like")
-    private Set<Like> userLikes = new HashSet<>();
+    private List<Like> userLikes = new ArrayList<>();
 
     @Builder
     public Like(User user, Share share) {
