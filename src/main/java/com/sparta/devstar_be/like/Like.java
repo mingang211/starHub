@@ -31,11 +31,11 @@ public class Like {
     @JoinColumn(name = "share_id")
     private Share share;
 
-    @OneToMany(mappedBy = "like")
-    private List<Like> shareLikes = new ArrayList<>();
-
-    @OneToMany(mappedBy = "like")
-    private List<Like> userLikes = new ArrayList<>();
+//    @OneToMany(mappedBy = "like")
+//    private Set<Like> shareLikes = new HashSet<>();
+//
+//    @OneToMany(mappedBy = "like")
+//    private Set<Like> userLikes = new HashSet<>();
 
     @Builder
     public Like(User user, Share share) {

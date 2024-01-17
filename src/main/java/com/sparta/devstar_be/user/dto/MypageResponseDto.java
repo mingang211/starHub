@@ -1,7 +1,7 @@
 package com.sparta.devstar_be.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.sparta.devstar_be.board.Board;
+import com.sparta.devstar_be.board.entity.Board;
 import com.sparta.devstar_be.share.Share;
 import lombok.Getter;
 

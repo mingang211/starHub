@@ -2,9 +2,6 @@ package com.sparta.devstar_be.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sparta.devstar_be.board.entity.Board;
-import com.sparta.devstar_be.board.entity.BoardComments;
-import com.sparta.devstar_be.like.Like;
-import com.sparta.devstar_be.like.UserLike;
 import com.sparta.devstar_be.share.Share;
 import com.sparta.devstar_be.user.dto.ProfileRequestDto;
 import jakarta.persistence.*;
@@ -39,17 +36,17 @@ public class User {
     @Column(nullable = false)
     private String major;
 
-    @OneToMany(mappedBy = "user")
-    private List<Board> boardList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
-    private List<Share> shareList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
-    private List<Like> userLikeList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<BoardComments> commentList = new ArrayList<>();
+//    @OneToMany(mappedBy = "user")
+//    private List<Board> boardList = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "user")
+//    private List<Share> shareList = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "user")
+//    private Set<UserLike> userLikes = new HashSet<>();
+//
+//    @OneToMany(mappedBy = "user", cascade = ALL, orphanRemoval = true)
+//    private List<Comment> comments = new ArrayList<>();
 
     public User(String name, String email, String encryptedPassword, String major) {
         this.name = name;

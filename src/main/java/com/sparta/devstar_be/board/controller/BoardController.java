@@ -1,9 +1,11 @@
 package com.sparta.devstar_be.board.controller;
 
-import com.sparta.devstar_be.board.service.BoardService;
 import com.sparta.devstar_be.board.dto.BoardDeleteResponseDto;
 import com.sparta.devstar_be.board.dto.BoardRequestDto;
 import com.sparta.devstar_be.board.dto.BoardResponseDto;
+import com.sparta.devstar_be.board.service.BoardService;
+import com.sparta.devstar_be.user.security.UserDetailsImpl;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,50 +21,34 @@ public class BoardController {
 
 
     @PostMapping("/starboards")
-    public ResponseEntity<BoardResponseDto>  createBoard (@RequestBody BoardRequestDto requestDto){
-        return boardService.createBoard(requestDto);
-    }
+    public ResponseEntity<BoardResponseDto>  createBoard (@RequestBody BoardRequestDto requestDto,
+                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
 
-//    @PostMapping("/starboards")
-//    public BoardResponseDto createBoard (@RequestBody BoardRequestDto requestDto,
-//                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
-//
-//        return boardService.createBoard(userDetails.getUser,requestDto);
-//    }
+        BoardResponseDto createBoard = boardService.createBoard(userDetails.getUser(),requestDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createBoard);
+    }
 
     @GetMapping("/starboards/{boardId}")
-    public BoardResponseDto getBoard (@PathVariable Long boardId) {
-        return  boardService.getBoard(boardId);
+    public ResponseEntity<BoardResponseDto> getBoard (@PathVariable Long boardId,
+                                                      @AuthenticationPrincipal UserDetailsImpl userDetails) {
+        BoardResponseDto getBoard = boardService.getBoard(boardId,userDetails.getUser());
+        return ResponseEntity.ok(getBoard);
     }
-
-//    @GetMapping("/starboards/{boardId}")
-//    public BoardResponseDto getBoard (@PathVariable Long boardId,
-//                                      @AuthenticationPrincipal UserDetailsImpl userDetails) {
-//        return  boardService.getBoard(boardId, userDetails.getUser);
-//    }
 
     @PutMapping("/starboards/{boardId}")
-    public BoardResponseDto updateBoard (@PathVariable Long boardId ,@RequestBody BoardRequestDto requestDto){
-        return boardService.updateBoard(boardId, requestDto);
+    public ResponseEntity<BoardResponseDto> updateBoard (@PathVariable Long boardId ,
+                                         @RequestBody BoardRequestDto requestDto,
+                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
+        BoardResponseDto updateBoard = boardService.updateBoard(boardId, requestDto, userDetails.getUser());
+        return ResponseEntity.ok(updateBoard);
     }
-
-//    @PutMapping("/starboards/{boardId}")
-//    public BoardResponseDto updateBoard (@PathVariable Long boardId ,
-//                                         @RequestBody BoardRequestDto requestDto,
-//                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
-//        return boardService.updateBoard(boardId, requestDto, userDetails.getUser(););
-//    }
 
     @DeleteMapping("/starboards/{boardId}")
-    public BoardDeleteResponseDto deleteBoard (@PathVariable Long boardId){
-        return boardService.deleteBoard(boardId);
+    public ResponseEntity<BoardDeleteResponseDto>  deleteBoard (@PathVariable Long boardId,
+                                               @AuthenticationPrincipal UserDetailsImpl userDetails){
+       BoardDeleteResponseDto deleteBoard = boardService.deleteBoard(boardId, userDetails.getUser());
+       return ResponseEntity.ok(deleteBoard);
     }
-
-//    @DeleteMapping("/starboards/{boardId}")
-//    public BoardDeleteResponseDto deleteBoard (@PathVariable Long boardId,
-//                                               @AuthenticationPrincipal UserDetailsImpl userDetails){
-//        return boardService.deleteBoard(boardId, userDetails.getUser());
-//    }
 
 
 }

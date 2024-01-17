@@ -42,40 +42,23 @@ public class Board {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Board(BoardRequestDto requestDto) {
+    public Board(User user, BoardRequestDto requestDto) {
         this.date = requestDto.getDate();
-        this.name = requestDto.getName();
-        this.major = requestDto.getMajor();
+        this.name = user.getName();
+        this.major = user.getMajor();
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
         this.imageUrl = requestDto.getImageUrl();
     }
 
-//    public Board(User user, BoardRequestDto requestDto) {
-//        this.date = requestDto.getDate();
-//        this.name = user.getUsername;
-//        this.major = user.getMajor;
-//        this.title = requestDto.getTitle();
-//        this.contents = requestDto.getContents();
-//        this.imageUrl = requestDto.getImageUrl();
-//    }
 
-    public void update(BoardRequestDto requestDto) {
+    public void update(BoardRequestDto requestDto, User user) {
         this.date = requestDto.getDate();
-        this.name = requestDto.getName();
-        this.major = requestDto.getMajor();
+        this.name = user.getName();
+        this.major = user.getMajor();
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
         this.imageUrl = requestDto.getImageUrl();
     }
-
-//    public void update(BoardRequestDto requestDto, User user) {
-//        this.date = requestDto.getDate();
-//        this.name = user.getUsername;
-//        this.major = user.getMajor;
-//        this.title = requestDto.getTitle();
-//        this.contents = requestDto.getContents();
-//        this.imageUrl = requestDto.getImageUrl();
-//    }
 
 }

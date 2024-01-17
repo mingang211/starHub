@@ -3,10 +3,8 @@ package com.sparta.devstar_be.like;
 import com.sparta.devstar_be.share.Share;
 import com.sparta.devstar_be.share.ShareRepository;
 import com.sparta.devstar_be.user.entity.User;
-import com.sparta.devstar_be.user.entity.UserRepository;
+import com.sparta.devstar_be.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
