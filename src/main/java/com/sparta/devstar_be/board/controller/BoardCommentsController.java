@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/starboards/{boardId}")
+@RequestMapping("/api/starboards")
 public class BoardCommentsController {
 
     private final BoardCommentsService boardCommentsService;
@@ -22,7 +22,7 @@ public class BoardCommentsController {
         this.boardCommentsService = boardCommentsService;
     }
 
-    @PostMapping("/comments")
+    @PostMapping("/{boardId}/comments")
     public ResponseEntity<BoardCommentsReponseDto> createComments(@PathVariable Long boardId,
                                                                   @RequestBody BoardCommentsRequestDto requestDto,
                                                                   @AuthenticationPrincipal UserDetailsImpl userDetails){
@@ -32,7 +32,7 @@ public class BoardCommentsController {
 
 
     @Transactional
-    @PutMapping("/comments/{commentId}")
+    @PutMapping("/{boardId}/comments/{commentId}")
     public ResponseEntity<BoardCommentsReponseDto> updateComments(@PathVariable Long boardId,@PathVariable Long commentId,
                                                   @RequestBody BoardCommentsRequestDto requestDto,
                                                   @AuthenticationPrincipal UserDetailsImpl userDetails){
@@ -43,7 +43,7 @@ public class BoardCommentsController {
     }
 
 
-    @DeleteMapping("/comments/{commentId}")
+    @DeleteMapping("/{boardId}/comments/{commentId}")
     public ResponseEntity<BoardCommentsDeleteReponseDto> deleteComments(@PathVariable Long boardId, @PathVariable Long commentId,
                                                         @AuthenticationPrincipal UserDetailsImpl userDetails){
         BoardCommentsDeleteReponseDto deleteComments = boardCommentsService.deleteComments(boardId,commentId, userDetails.getUser());
