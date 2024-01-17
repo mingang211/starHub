@@ -1,5 +1,6 @@
 package com.sparta.devstar_be.share;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sparta.devstar_be.like.Like;
 import com.sparta.devstar_be.user.entity.User;
 import jakarta.persistence.*;
@@ -35,6 +36,7 @@ public class Share {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "share")
     private List<Like> shareLikeList = new ArrayList<>();
 

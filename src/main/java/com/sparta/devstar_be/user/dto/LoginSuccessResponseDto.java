@@ -11,6 +11,6 @@ public class LoginSuccessResponseDto {
 
     public LoginSuccessResponseDto(Long userId, String token) { // valueToken -> token
         this.userId = userId;
-        this.token = token;
+        this.token = "Bearer%20"+token;
     }
 }
