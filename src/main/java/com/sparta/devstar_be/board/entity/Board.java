@@ -36,7 +36,7 @@ public class Board {
     private String imageUrl;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<BoardComments> commentsList = new ArrayList<>();
+    private List<BoardComments> comments = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -49,6 +49,7 @@ public class Board {
         this.title = requestDto.getTitle();
         this.contents = requestDto.getContents();
         this.imageUrl = requestDto.getImageUrl();
+        this.user = user;
     }
 
 
