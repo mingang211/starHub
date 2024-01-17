@@ -1,6 +1,5 @@
 package com.sparta.devstar_be.like;
 
-import com.sparta.devstar_be.board.Board;
 import com.sparta.devstar_be.share.Share;
 import com.sparta.devstar_be.user.entity.User;
 import jakarta.persistence.*;
@@ -30,11 +29,11 @@ public class Like {
     @JoinColumn(name = "share_id")
     private Share share;
 
-    @OneToMany(mappedBy = "like")
-    private Set<Like> shareLikes = new HashSet<>();
-
-    @OneToMany(mappedBy = "like")
-    private Set<Like> userLikes = new HashSet<>();
+//    @OneToMany(mappedBy = "like")
+//    private Set<Like> shareLikes = new HashSet<>();
+//
+//    @OneToMany(mappedBy = "like")
+//    private Set<Like> userLikes = new HashSet<>();
 
     @Builder
     public Like(User user, Share share) {

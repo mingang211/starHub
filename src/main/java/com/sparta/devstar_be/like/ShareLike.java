@@ -1,6 +1,5 @@
 package com.sparta.devstar_be.like;
 
-import com.sparta.devstar_be.board.Board;
 import com.sparta.devstar_be.share.Share;
 import jakarta.persistence.*;
 

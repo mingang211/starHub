@@ -17,8 +17,8 @@ public class LikeResponseDto {
 
     public LikeResponseDto(Like like) {
         this.likeId = like.getId();
-        this.userId = like.getUser().getId();
-        this.shareId = like.getShare().getId();
+        this.userId = like.getUser().getUserId();
+        this.shareId = like.getShare().getShareId();
         this.share = like.getShare();
     }
 }

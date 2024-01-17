@@ -1,7 +1,7 @@
 package com.sparta.devstar_be.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.sparta.devstar_be.board.Board;
+import com.sparta.devstar_be.board.entity.Board;
 import com.sparta.devstar_be.share.Share;
 import com.sparta.devstar_be.user.dto.ProfileRequestDto;
 import jakarta.persistence.*;
@@ -33,11 +33,11 @@ public class User {
     @Column(nullable = false)
     private String major;
 
-    @OneToMany(mappedBy = "user")
-    private List<Board> boardList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "user")
-    private List<Share> shareList = new ArrayList<>();
+//    @OneToMany(mappedBy = "user")
+//    private List<Board> boardList = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "user")
+//    private List<Share> shareList = new ArrayList<>();
 //
 //    @OneToMany(mappedBy = "user")
 //    private Set<UserLike> userLikes = new HashSet<>();

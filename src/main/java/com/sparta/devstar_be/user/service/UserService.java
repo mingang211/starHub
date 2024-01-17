@@ -1,6 +1,6 @@
 package com.sparta.devstar_be.user.service;
 
-import com.sparta.devstar_be.board.Board;
+import com.sparta.devstar_be.board.entity.Board;
 import com.sparta.devstar_be.share.Share;
 import com.sparta.devstar_be.user.dto.*;
 import com.sparta.devstar_be.user.entity.User;
@@ -69,15 +69,15 @@ public class UserService {
     }
 
     // 3. 마이페이지 조회
-    public ResponseEntity<MypageResponseDto> getListsByUserId(Long userId) {
-        log.info("[log] getListsByUserId: 마이페이지 조회 시도");
-        User user = userRepository.findById(userId).orElseThrow(
-                () -> new IllegalArgumentException("[IllegalArgumentException 발생] 가입된 사용자 정보가 없습니다."));
-        List<Board> boardList = user.getBoardList();
-        List<Share> shareList = user.getShareList();
-        log.info("[log] getListsByUserId: 마이페이지 조회 성공");
-        return ResponseEntity.status(HttpStatus.OK).body(new MypageResponseDto(boardList, shareList));
-    }
+//    public ResponseEntity<MypageResponseDto> getListsByUserId(Long userId) {
+//        log.info("[log] getListsByUserId: 마이페이지 조회 시도");
+//        User user = userRepository.findById(userId).orElseThrow(
+//                () -> new IllegalArgumentException("[IllegalArgumentException 발생] 가입된 사용자 정보가 없습니다."));
+//        List<Board> boardList = user.getBoardList();
+//        List<Share> shareList = user.getShareList();
+//        log.info("[log] getListsByUserId: 마이페이지 조회 성공");
+//        return ResponseEntity.status(HttpStatus.OK).body(new MypageResponseDto(boardList, shareList));
+//    }
 
     // 4. 개인정보 수정
     @Transactional
