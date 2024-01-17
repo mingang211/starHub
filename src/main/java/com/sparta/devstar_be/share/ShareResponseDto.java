@@ -16,7 +16,7 @@ public class ShareResponseDto {
     private String major;
 
     public ShareResponseDto(Share share){
-        this.shareId = share.getId();
+        this.shareId = share.getShareId();
         this.title = share.getTitle();
         this.contents = share.getContents();
         this.url = share.getUrl();

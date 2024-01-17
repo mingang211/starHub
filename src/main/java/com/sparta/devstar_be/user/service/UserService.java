@@ -1,6 +1,6 @@
 package com.sparta.devstar_be.user.service;
 
-import com.sparta.devstar_be.board.Board;
+import com.sparta.devstar_be.board.entity.Board;
 import com.sparta.devstar_be.share.Share;
 import com.sparta.devstar_be.user.dto.*;
 import com.sparta.devstar_be.user.entity.User;
@@ -63,21 +63,21 @@ public class UserService {
     // 2. 개인정보 조회
     public ResponseEntity<ProfileResponseDto> getUserProfile(UserDetailsImpl userDetails) {
         log.info("[log] getUserProfile: 개인정보 조회 시도");
-        ProfileResponseDto profileResponseDto = new ProfileResponseDto(userDetails.getUser().getUserId(), userDetails.getUsername(), userDetails.getEmail(), userDetails.getMajor());
+        ProfileResponseDto profileResponseDto = new ProfileResponseDto(userDetails.getUser().getUserId(), userDetails.getUser().getName(), userDetails.getUser().getEmail(), userDetails.getUser().getMajor());
         log.info("[log] getUserProfile: 개인정보 조회 완료");
         return ResponseEntity.status(HttpStatus.OK).body(profileResponseDto);
     }
 
     // 3. 마이페이지 조회
-    public ResponseEntity<MypageResponseDto> getListsByUserId(Long userId) {
-        log.info("[log] getListsByUserId: 마이페이지 조회 시도");
-        User user = userRepository.findById(userId).orElseThrow(
-                () -> new IllegalArgumentException("[IllegalArgumentException 발생] 가입된 사용자 정보가 없습니다."));
-        List<Board> boardList = user.getBoardList();
-        List<Share> shareList = user.getShareList();
-        log.info("[log] getListsByUserId: 마이페이지 조회 성공");
-        return ResponseEntity.status(HttpStatus.OK).body(new MypageResponseDto(boardList, shareList));
-    }
+//    public ResponseEntity<MypageResponseDto> getListsByUserId(Long userId) {
+//        log.info("[log] getListsByUserId: 마이페이지 조회 시도");
+//        User user = userRepository.findById(userId).orElseThrow(
+//                () -> new IllegalArgumentException("[IllegalArgumentException 발생] 가입된 사용자 정보가 없습니다."));
+//        List<Board> boardList = user.getBoardList();
+//        List<Share> shareList = user.getShareList();
+//        log.info("[log] getListsByUserId: 마이페이지 조회 성공");
+//        return ResponseEntity.status(HttpStatus.OK).body(new MypageResponseDto(boardList, shareList));
+//    }
 
     // 4. 개인정보 수정
     @Transactional

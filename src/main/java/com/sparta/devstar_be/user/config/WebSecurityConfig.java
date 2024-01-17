@@ -1,5 +1,6 @@
 package com.sparta.devstar_be.user.config;
 
+import com.sparta.devstar_be.user.jwt.JwtUtil;
 import org.springframework.security.config.Customizer;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -7,7 +8,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.sparta.devstar_be.user.jwt.JwtAuthenticationFilter;
 import com.sparta.devstar_be.user.jwt.JwtAuthorizationFilter;
-import com.sparta.devstar_be.user.jwt.JwtUtil;
 import com.sparta.devstar_be.user.security.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -64,7 +64,7 @@ public class WebSecurityConfig {
 
         // 3. HTTP 요청 인증 구성 설정
         http.authorizeHttpRequests((authorizeHttpRequests) ->
-                authorizeHttpRequests.requestMatchers("/api/user/**").permitAll().anyRequest().authenticated());
+                authorizeHttpRequests.requestMatchers("/**").permitAll().anyRequest().authenticated());
 
         // 4. HTTP 폼 로그인 설정
         http.formLogin(AbstractHttpConfigurer::disable);

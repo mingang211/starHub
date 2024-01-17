@@ -3,10 +3,8 @@ package com.sparta.devstar_be.like;
 import com.sparta.devstar_be.share.Share;
 import com.sparta.devstar_be.share.ShareRepository;
 import com.sparta.devstar_be.user.entity.User;
-import com.sparta.devstar_be.user.entity.UserRepository;
+import com.sparta.devstar_be.user.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +26,7 @@ public class LikeService {
     @Transactional
     public LikeResponseDto addLikeToShare(Long shareId, User correntUser){
         // user, share, like가 존재하는지 확인
-        Long userId = correntUser.getId();
+        Long userId = correntUser.getUserId();
 
         User user = userRepository.findById(userId).orElseThrow(()->
                 new EntityNotFoundException("해당하는 사용자가 존재하지 않습니다."));
@@ -55,7 +53,7 @@ public class LikeService {
     @Transactional
     public LikeResponseDto deleteLikeToShare(Long shareId, User currentUser) {
         // user, share, like가 존재하는지 확인
-        Long userId = currentUser.getId();
+        Long userId = currentUser.getUserId();
 
         User user = userRepository.findById(userId).orElseThrow(()->
                 new EntityNotFoundException("해당하는 사용자가 존재하지 않습니다."));

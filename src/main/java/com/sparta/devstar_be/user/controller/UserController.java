@@ -30,11 +30,16 @@ public class UserController {
         return userService.getUserProfile(userDetails);
     }
 
-    // 3. 마이페이지 조회
-    @GetMapping("/mypage/{userId}")
-    public ResponseEntity<MypageResponseDto> getListsByUserId(@PathVariable Long userId) {
-        return userService.getListsByUserId(userId);
+    @GetMapping("/test")
+    public String testProfile(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return "Api test profile";
     }
+
+    // 3. 마이페이지 조회
+//    @GetMapping("/mypage/{userId}")
+//    public ResponseEntity<MypageResponseDto> getListsByUserId(@PathVariable Long userId) {
+//        return userService.getListsByUserId(userId);
+//    }
 
     // 4. 개인정보 수정
     @PutMapping("/profile")
