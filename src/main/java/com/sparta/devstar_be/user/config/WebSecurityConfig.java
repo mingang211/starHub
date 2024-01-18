@@ -1,6 +1,7 @@
 package com.sparta.devstar_be.user.config;
 
 import com.sparta.devstar_be.user.jwt.JwtUtil;
+import org.springframework.boot.autoconfigure.security.reactive.PathRequest;
 import org.springframework.security.config.Customizer;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -55,40 +56,25 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // 1. CSRF(Cross-Site Request Forgery) 설정 비활성화
+        // CSRF(Cross-Site Request Forgery) 설정 비활성화
         http.csrf((csrf) -> csrf.disable());
 
-        // 2. JWT 사용 선언
+        // JWT 사용 선언
         http.sessionManagement((sessionManagement) ->
                 sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        // 3. HTTP 요청 인증 구성 설정
+        // HTTP 요청 인증 구성 설정
         http.authorizeHttpRequests((authorizeHttpRequests) ->
-                authorizeHttpRequests.requestMatchers("/**").permitAll().anyRequest().authenticated());
+                authorizeHttpRequests
+                        .requestMatchers(String.valueOf(PathRequest.toStaticResources().atCommonLocations())).permitAll()
+                        .requestMatchers("/**").permitAll().anyRequest().authenticated());
 
-        // 4. HTTP 폼 로그인 설정
-        http.formLogin(AbstractHttpConfigurer::disable);
-
-        // 5. 필터 순서 설정
+        // 필터 순서 설정
         http.addFilterBefore(jwtAuthorizationFilter(), JwtAuthenticationFilter.class);
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
-        // 6. CORS 설정 적용
+        // CORS 설정 적용
         http.cors(Customizer.withDefaults());
         return http.build();
-    }
-
-    // CORS 설정 빈 등록
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:3000"));
-        config.setAllowedMethods(List.of("HEAD", "POST", "GET", "DELETE", "PUT"));
-        config.setAllowedHeaders(List.of("*"));
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
-        return source;
     }
 }
