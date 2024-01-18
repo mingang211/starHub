@@ -6,6 +6,7 @@
 - 진행: code convention에 따라 개별 기능을 구현한 후, 코드 리뷰를 통해 develop하는 방식으로 진행함
 ##
 ### 📌 [Code Convention 정립]
+##
 #### 코드 컨벤션
 1. 생성자명과 클래스명은 파스칼 케이스에 따라 작성함
    
@@ -22,9 +23,9 @@
 7. 주석의 경우, 한 줄 ‘//‘ 또는 여러 줄 ‘/** */’로 통일함
 
 8. magic number 사용을 지양함(e.g. str.equals(’보드’) -> str.equals(’보드 할당 변수명’))
-
-### 커밋 메시지 컨벤션
+   
 ##
+### 커밋 메시지 컨벤션
 #### 1. 커밋 메세지는 제목+타입/본문(body)/꼬리말(footer)로 구성
 
 (필수) 제목+type : 어떤 의도로 커밋했는지
@@ -88,8 +89,7 @@ Ref: #456 //이슈 456 를 참고해야하며,
 Related to: #48, #45 //현재 커밋에서 아직 이슈 48 과 45 가 해결
 
 ##
-## 깃 플로우
-##
+## 📌 깃 플로우
 1. 프로젝트의 메인 브랜치는 'main'
    
 2. main branch를 직접 수정하지 않기 위해 develop branch생성함.
@@ -103,6 +103,7 @@ Related to: #48, #45 //현재 커밋에서 아직 이슈 48 과 45 가 해결
 6. 팀원들과 코드 리뷰를 진행한 후 develop branch에 pull request를 생성.
     
 7. develop branch가 안정화되면 main branch로 pull request를 생성하고 충돌을 확인한 후 main branch로 머지 진행.
+##
 #### 📌 [API 명세서 / Use Case Diagram / Entity Relationship Diagram]
 [⭐️ 항해99 18기 Dev Star's API 명세서](https://experienced-equinox-093.notion.site/48ae768eca244b159c657654faa3eeec?v=747bfe44cac64f48800e0f76292787f8)
 //[Figma](https://www.figma.com/file/T6cCr9BLrl6mL2wv9bWKkM/starboard?type=design&node-id=0-1&mode=design&t=VAQx5xeomcA4WSlM-0) // [Entity Relationship Diagram](https://playible.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F8303614e-6951-4071-a826-037e1e2a81b6%2F93dd3e7e-5a6f-4776-abab-14e2a61fd629%2F%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2024-01-17_234252.png?table=block&id=8b3562b8-c0da-4c72-afca-b36d416af02d&spaceId=8303614e-6951-4071-a826-037e1e2a81b6&width=950&userId=&cache=v2)
